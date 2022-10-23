@@ -37,6 +37,8 @@ public class WordleFrameDrawer {
             WordleFrameDrawer.setButtons(buttons);
 
             frame.add(cell);
+
+            // addEventListener
         }
 
     }

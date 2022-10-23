@@ -86,7 +86,6 @@ public class DrawWord extends WordleInputHandler {
 
         if (numGuesses != 5) {
             numGuesses++;
-            System.out.println("THIS IS NUM GUESS" + numGuesses);
 
         } else {
             numGuesses = 0;

@@ -5,6 +5,9 @@ public class WordleEngine {
     }
 
     public static void main(String[] args) {
+        System.out.println("Welcome to WordleJava!");
+        Utility.sleepThread(1);
+        System.out.println("Please wait for the board to draw! Thank You!");
 
         // ======INIT GAME======
         WordleInputHandler engine = new WordleInputHandler();
@@ -21,35 +24,11 @@ public class WordleEngine {
 
         // ======RUN GAME======
 
-        // 1st Guess
-        engine.setGuess();
-        drawer.fillRow(engine.getGuess());
-        engine.resetGuess();
-
-        // 2nd Guess
-        engine.setGuess();
-        drawer.fillRow(engine.getGuess());
-        engine.resetGuess();
-
-        // 3rd Guess
-        engine.setGuess();
-        drawer.fillRow(engine.getGuess());
-        engine.resetGuess();
-
-        // 4th Guess
-        engine.setGuess();
-        drawer.fillRow(engine.getGuess());
-        engine.resetGuess();
-
-        // 5th Guess
-        engine.setGuess();
-        drawer.fillRow(engine.getGuess());
-        engine.resetGuess();
-
-        // Final Guess
-        engine.setGuess();
-        drawer.fillRow(engine.getGuess());
-        engine.endGame();
+        for (int i = 0; i < 6; i++) {
+            engine.setGuess();
+            drawer.fillRow(engine.getGuess());
+            engine.resetGuess();
+        }
 
     }
 }
