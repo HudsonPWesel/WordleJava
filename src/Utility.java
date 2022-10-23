@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class Utility {
@@ -28,6 +30,30 @@ public class Utility {
         } catch (Exception e) {
             // TODO: handle exception
         }
+    }
+
+    public static int getRandomInt(int min, int max) {
+        return (int) (Math.random() * (max - min) + 1);
+
+    }
+
+    public static int getRandomStringIndex(String word) {
+        return (int) (Math.random() * (word.length() - 1) + 1);
+
+    }
+
+    /**
+     * <h3>Selects random word from arr</h3>
+     * 
+     * @param words
+     * @return a random word
+     */
+
+    public static String selectAnswer(ArrayList<String> words) {
+
+        int randomIndex = ((int) (Math.random() * (words.size() - 1) + 1));
+
+        return words.get(randomIndex).toLowerCase();
     }
 
 }

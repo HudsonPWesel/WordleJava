@@ -8,6 +8,14 @@ public class DrawWord extends WordleInputHandler {
 
     private int greenCounter = 0;
 
+    /**
+     * <h4>Using numGuesses from WordleInputHandler, method determines what buttons
+     * to
+     * put in current row>
+     * 
+     * @return Sublist of buttons
+     */
+
     public List<JButton> getRowCells() {
         // Based on number return certain part of ArrayList
 
@@ -43,8 +51,23 @@ public class DrawWord extends WordleInputHandler {
 
     }
 
+    /**
+     * <h3>Gives hints on letters inputted with colors
+     * 
+     * @param guess
+     */
+
     public void hintGiver(String guess) {
 
+        // Prints letter to user
+        if (numGuesses == 3) {
+            System.out.println("Here is a helpful hint!");
+            Utility.sleepThread(1);
+            int randomIndex = Utility.getRandomStringIndex(getAnswer());
+            char hintLetter = getAnswer().charAt(randomIndex);
+            System.out.println("The letter " + "\"" + hintLetter + "\"" + " is at position " +
+                    (randomIndex + 1) + " in the word");
+        }
         for (JButton btn : getRowCells()) {
 
             // Check for green note btn.getText gives one String lette
@@ -55,7 +78,7 @@ public class DrawWord extends WordleInputHandler {
                 changeCellBgColor(btn, Color.green);
                 greenCounter++;
                 if (greenCounter == 6) {
-                    endGame();
+                    winGame();
                 }
             }
 
@@ -103,6 +126,9 @@ public class DrawWord extends WordleInputHandler {
         hintGiver(getGuess());
     }
 
+    /**
+     * Creates borders for each cell in cellList
+     */
     public void setColorCellBorder() {
         for (JButton button : WordleFrameDrawer.getButtons()) {
             button.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -120,10 +146,6 @@ public class DrawWord extends WordleInputHandler {
 
         button.setBackground(color);
         button.setOpaque(true);
-
-    }
-
-    public static void main(String[] args) {
 
     }
 

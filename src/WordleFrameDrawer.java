@@ -30,6 +30,12 @@ public class WordleFrameDrawer {
 
     }
 
+    /**
+     * Adds cell to arraylist of buttons and JFrame
+     * 
+     * @param numLoops
+     */
+
     public void addCell(int numLoops) {
         for (int i = 0; i < numLoops; i++) {
             cell = new JButton();
@@ -38,7 +44,6 @@ public class WordleFrameDrawer {
 
             frame.add(cell);
 
-            // addEventListener
         }
 
     }
@@ -61,9 +66,4 @@ public class WordleFrameDrawer {
         return this.drawer;
     }
 
-    public static void main(String[] args) {
-
-        // ***INIT***
-
-    }
 }
