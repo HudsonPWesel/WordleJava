@@ -6,29 +6,36 @@ import javax.swing.JButton;
 
 public class DrawWord extends WordleInputHandler {
 
-    public void winGame() {
-        System.out.println("YOU WIN🏆");
-    }
+    private int greenCounter = 0;
 
-    private List<JButton> getRowCells() {
+    public List<JButton> getRowCells() {
         // Based on number return certain part of ArrayList
 
+        // super.  is not needed her as you do no have a variable named numGuesses in this Class
+        // (Bad coding practice)
         switch (super.numGuesses) {
 
             case 1:
-                System.out.println("RUN CASE");
+
                 return WordleFrameDrawer.getButtons().subList(0, 6);
 
             case 2:
+                greenCounter = 0;
                 return WordleFrameDrawer.getButtons().subList(6, 12);
 
             case 3:
+                greenCounter = 0;
+
                 return WordleFrameDrawer.getButtons().subList(12, 18);
 
             case 4:
+                greenCounter = 0;
+
                 return WordleFrameDrawer.getButtons().subList(18, 24);
 
             case 5:
+                greenCounter = 0;
+
                 return WordleFrameDrawer.getButtons().subList(24, 30);
 
             default:
@@ -37,7 +44,7 @@ public class DrawWord extends WordleInputHandler {
         }
 
     }
-
+    // You never use your "guess" variable????
     public void hintGiver(String guess) {
 
         for (JButton btn : getRowCells()) {
@@ -48,22 +55,25 @@ public class DrawWord extends WordleInputHandler {
             if (btn.getText().equals(Character.toString(answer.charAt(getRowCells().indexOf(btn))))) {
 
                 changeCellBgColor(btn, Color.green);
+                greenCounter++;
+                if (greenCounter == 6) { // Dont use {} if only one line of code afterwards
+                    endGame();
+                }
+                return;
             }
 
             // Make sure guess letter is in answer
-            else if (answer.contains(btn.getText())) {
-                // Make sure it's in wrong pos
+            if (answer.contains(btn.getText())) {
+                // Make sure it's in wrong pos   -  always use equalsIgnoreCase to detect text in this way.
                 if (!btn.getText().equals(Character.toString(answer.charAt(getRowCells().indexOf(btn))))) {
 
                     changeCellBgColor(btn, Color.yellow);
                 }
-
+                return;
             }
 
-            else {
-                changeCellBgColor(btn, Color.LIGHT_GRAY);
 
-            }
+            changeCellBgColor(btn, Color.LIGHT_GRAY);
 
         }
 
@@ -79,7 +89,7 @@ public class DrawWord extends WordleInputHandler {
             numGuesses++;
             System.out.println("THIS IS NUM GUESS" + numGuesses);
 
-        } else {
+        } else { // Dont use {} if only one line of code afterwards
             numGuesses = 0;
         }
 
@@ -96,14 +106,14 @@ public class DrawWord extends WordleInputHandler {
     }
 
     public void setColorCellBorder() {
-        for (JButton button : WordleFrameDrawer.getButtons()) {
+        for (JButton button : WordleFrameDrawer.getButtons()) { // Dont use {} if only one line of code afterwards
             button.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         }
 
     }
 
     public void changeCellFont() {
-        for (JButton button : WordleFrameDrawer.getButtons()) {
+        for (JButton button : WordleFrameDrawer.getButtons()) { // Dont use {} if only one line of code afterwards
             button.setFont(new Font("Dialog", Font.BOLD, 48));
         }
     }
@@ -114,9 +124,4 @@ public class DrawWord extends WordleInputHandler {
         button.setOpaque(true);
 
     }
-
-    public static void main(String[] args) {
-
-    }
-
 }

@@ -1,6 +1,10 @@
 public class WordleEngine {
 
-    public static void main(String[] args) {
+    public void endGame() {
+        System.out.println("Congratulations You Win");
+    }
+
+    public static void main(String[] args) { // Great job, always keep your Main Class organized
 
         // ======INIT GAME======
         WordleInputHandler engine = new WordleInputHandler();
@@ -45,7 +49,7 @@ public class WordleEngine {
         // Final Guess
         engine.setGuess();
         drawer.fillRow(engine.getGuess());
-        engine.resetGuess();
+        engine.endGame();
 
     }
 }

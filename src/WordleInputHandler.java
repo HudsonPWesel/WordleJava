@@ -1,9 +1,16 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.awt.Color;
+
+import javax.swing.JButton;
+
 import java.lang.Math;
 
 public class WordleInputHandler extends WordleEngine {
+
+    // since you only initlize your Variable once and you do this in your constructor. Make it final (See under)
+    // private final Scanner scanner;
     private Scanner scanner;
     protected int numGuesses;
 
@@ -50,6 +57,9 @@ public class WordleInputHandler extends WordleEngine {
     }
 
     public void resetGuess() {
+
+        // if all bg cell color == green then run endGame functoin
+
         this.guess = "";
     }
 
@@ -58,8 +68,5 @@ public class WordleInputHandler extends WordleEngine {
         return this.guess;
     }
 
-    public static void main(String[] args) {
-
-    }
 
 }

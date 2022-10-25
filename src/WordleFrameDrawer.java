@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.Color;
 
 public class WordleFrameDrawer {
+
+    // Why is this Static???? Make A getter instead!
     private static ArrayList<JButton> buttons = new ArrayList<JButton>();
 
     private JFrame frame = new JFrame();
@@ -14,6 +16,7 @@ public class WordleFrameDrawer {
 
     private DrawWord drawer = new DrawWord();
 
+    // Public, Protected or Private Constructor???? (Choose Public here)
     WordleFrameDrawer() {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -57,24 +60,5 @@ public class WordleFrameDrawer {
 
     public DrawWord getDrawer() {
         return this.drawer;
-    }
-
-    public static void main(String[] args) {
-
-        // ***INIT***
-        WordleFrameDrawer wordleFrame = new WordleFrameDrawer();
-
-        DrawWord drawer = wordleFrame.getDrawer();
-
-        wordleFrame.addCell(30);
-
-        drawer.fillRow(drawer.getGuess());
-
-        drawer.setColorCellBorder();
-
-        drawer.changeCellFont();
-
-        // drawer.hintGiver(drawer.getAnswer(), 1);
-
     }
 }

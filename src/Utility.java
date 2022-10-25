@@ -3,7 +3,7 @@ import javax.swing.*;
 
 public class Utility {
 
-    public static JButton getElementsJButton(JButton[] arr) {
+    public static JButton getElementsJButton(JButton[] arr) { // Dont use {} if only one line of code afterwards
         for (JButton JButton : arr) {
 
             return JButton;
@@ -12,7 +12,7 @@ public class Utility {
 
     }
 
-    public static char getElementsString(String string) {
+    public static char getElementsString(String string) { // Dont use {} if only one line of code afterwards
         for (char letter : string.toCharArray()) {
 
             return letter;
@@ -21,11 +21,11 @@ public class Utility {
 
     }
 
-    public static void sleepThread(int seconds) {
+    public static void sleepThread(int seconds) { // It is a REALLY bad practive to freeze your thread. Only do it if you have a seberat thread
         try {
             Thread.sleep((long) seconds * 1000);
 
-        } catch (Exception e) {
+        } catch (Exception e) { // if exeption isn't handled, call the exption "ignored" -> catch (Exeption ignored) { }
             // TODO: handle exception
         }
     }
